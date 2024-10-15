@@ -1,9 +1,9 @@
-'use client';
+"use client";
 
-import { useState } from 'react';
-import Link from 'next/link';
-import { BlogPosts } from './../components/posts'; // Importing BlogPosts component
-import { products } from './../components/products/productList'; // Importing services
+import { useState } from "react";
+import Link from "next/link";
+import { BlogPosts } from "../../components/posts"; // Importing BlogPosts component
+import { products } from "../../components/products/productList"; // Importing services
 import {
   Card,
   CardContent,
@@ -11,10 +11,10 @@ import {
   CardFooter,
   CardHeader,
   CardTitle,
-} from "@/components/ui/card"
-import { Button } from "@/components/ui/button"
-import { Separator } from "@/components/ui/separator"
-import { Badge } from "@/components/ui/badge"
+} from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
+import { Separator } from "@/components/ui/separator";
+import { Badge } from "@/components/ui/badge";
 
 export default function Page() {
   const [selectedService, setSelectedService] = useState<number | null>(null);
@@ -23,7 +23,11 @@ export default function Page() {
     <section className="font-aptos text-gray-800">
       {/* Headshot image in the center top of the page */}
       <div className="flex justify-center mb-8">
-        <img src="/assets/images/website_headshot.jpeg" alt="Dominic Quintilian Headshot" className="w-40 h-40 rounded-full border-4 border-blue-500 shadow-lg" />
+        <img
+          src="/assets/images/website_headshot.jpeg"
+          alt="Dominic Quintilian Headshot"
+          className="w-40 h-40 rounded-full border-4 border-blue-500 shadow-lg"
+        />
       </div>
 
       {/* Page header with name and title */}
@@ -36,7 +40,11 @@ export default function Page() {
 
       {/* Introduction paragraph */}
       <p className="mb-8 text-center max-w-2xl mx-auto text-gray-800 dark:text-neutral-100">
-        As a Fractional Product Manager, I offer a range of services designed to drive business outcomes through data analytics, cross-functional collaboration, and a deep understanding of user needs. Explore my offerings below to see how I can help you develop and enhance your products.
+        As a Fractional Product Manager, I offer a range of services designed to
+        drive business outcomes through data analytics, cross-functional
+        collaboration, and a deep understanding of user needs. Explore my
+        offerings below to see how I can help you develop and enhance your
+        products.
       </p>
 
       <Separator className="my-8" />
@@ -44,7 +52,11 @@ export default function Page() {
       {/* Call to Action Section */}
       <div className="my-8 py-6">
         <div className="flex justify-center">
-          <Link href="https://calendar.app.google/3ccDgwaDfwD6iGT77" target="_blank" rel="noopener noreferrer">
+          <Link
+            href="https://calendar.app.google/3ccDgwaDfwD6iGT77"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
             <Button size="lg">Let's Chat!</Button>
           </Link>
         </div>
@@ -55,27 +67,34 @@ export default function Page() {
         {products.map((service, index) => (
           <Card
             key={index}
-            onClick={() => setSelectedService(selectedService === index ? null : index)}
-            className={`transition-all duration-500 ease-in-out transform hover:shadow-lg hover:-translate-y-1 cursor-pointer ${selectedService === index ? 'bg-blue-100 scale-105' : ''}`}
+            onClick={() =>
+              setSelectedService(selectedService === index ? null : index)
+            }
+            className={`transition-all duration-500 ease-in-out transform hover:shadow-lg hover:-translate-y-1 cursor-pointer ${
+              selectedService === index ? "bg-blue-100 scale-105" : ""
+            }`}
           >
             <CardHeader>
-              <CardTitle className={selectedService === index ? 'text-black' : 'dark:text-white'}>
+              <CardTitle
+                className={
+                  selectedService === index ? "text-black" : "dark:text-white"
+                }
+              >
                 {service.title}
               </CardTitle>
-              
-             
             </CardHeader>
             {selectedService === index && (
               <CardContent className="transition-opacity duration-500 ease-in-out opacity-100">
                 <p>{service.description}</p>
                 <p className="mt-4">
-                  Learn more about how I can assist you with {service.title}. Contact me for a tailored consultation to understand how this service can meet your specific needs and drive success for your product.
+                  Learn more about how I can assist you with {service.title}.
+                  Contact me for a tailored consultation to understand how this
+                  service can meet your specific needs and drive success for
+                  your product.
                 </p>
               </CardContent>
             )}
-            <CardFooter>
-               
-            </CardFooter>
+            <CardFooter></CardFooter>
           </Card>
         ))}
       </div>
