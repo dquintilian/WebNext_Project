@@ -7,6 +7,20 @@ import { SpeedInsights } from "@vercel/speed-insights/next";
 import Footer from "../components/footer";
 import { baseUrl } from "./sitemap";
 import Head from "next/head";
+import BlogFooter from "@/components/blogFooter";
+import Link from "next/link";
+import { Separator } from "@/components/ui/separator";
+
+import {
+  NavigationMenu,
+  NavigationMenuContent,
+  NavigationMenuIndicator,
+  NavigationMenuItem,
+  NavigationMenuLink,
+  NavigationMenuList,
+  NavigationMenuTrigger,
+  NavigationMenuViewport,
+} from "@/components/ui/navigation-menu";
 
 // Import fonts using localFont
 const geistSans = localFont({
@@ -71,11 +85,9 @@ export default function RootLayout({
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <body className="antialiased max-w-xl mx-4 mt-8 lg:mx-auto">
+        <Navbar />
         <main className="flex-auto min-w-0 mt-6 flex flex-col px-2 md:px-0">
-          <Navbar />
           {children}
-          {/* Uncomment if you want to use the Footer */}
-          {/* <Footer /> */}
           <Analytics />
           <SpeedInsights />
         </main>

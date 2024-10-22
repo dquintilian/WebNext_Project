@@ -32,7 +32,7 @@ export default function Page() {
       <section>
         <header>
           <div className="flex justify-center mb-8">
-            <Image
+            <img
               src="/assets/images/website_headshot.jpeg"
               alt="Dominic Quintilian Headshot"
               className="w-40 h-40 rounded-full border-4 border-blue-500 shadow-lg"
@@ -70,7 +70,7 @@ export default function Page() {
 
       <section>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-16">
-          {products.map((service, index) => (
+          {products.map(( service, index) => (
             <Card
               key={index}
               onClick={() =>

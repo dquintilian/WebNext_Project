@@ -10,9 +10,8 @@ export default function NotFound() {
         <p></p>
       </div>
       <div>
-        <Link href={}>
         <p>Why don't you try visiting this page instead? </p>
-        </Link>
+
       </div>
     </section>
   );
