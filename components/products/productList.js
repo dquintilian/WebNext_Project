@@ -1,5 +1,6 @@
 // services/serviceList.js
 
+//These are the products that are intended to be listed on the front page of the website, which users can expect to contact me about
 export const products = [
     {
       title: 'Product Strategy Definition',

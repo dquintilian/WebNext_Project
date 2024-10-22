@@ -1,3 +1,4 @@
+import Link from "next/link";
 export default function NotFound() {
   return (
     <section>
@@ -9,8 +10,10 @@ export default function NotFound() {
         <p></p>
       </div>
       <div>
-        <p></p>
+        <Link href={}>
+        <p>Why don't you try visiting this page instead? </p>
+        </Link>
       </div>
     </section>
-  )
+  );
 }

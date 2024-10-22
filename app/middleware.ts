@@ -4,7 +4,6 @@ import type { NextRequest } from 'next/server';
 
 export function middleware(request: NextRequest) {
   const { pathname } = request.nextUrl;
-
   // Ensure URLs without a trailing slash are redirected to include one (except API routes or files)
   if (!pathname.endsWith('/') && !pathname.includes('.')) {
     return NextResponse.redirect(`${request.nextUrl.origin}${pathname}/`);
