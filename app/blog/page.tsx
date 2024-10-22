@@ -21,10 +21,10 @@ export default function BlogPage() {
     <div className="container mx-auto px-4 py-8">
       <h1 className="text-4xl font-bold mb-8">Blog 📝</h1>
       <Separator className="my-4" />
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-1 gap-8">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-1 gap-8 cursor-pointer">
         {blogPosts.map((post) => (
           <Link href={`/blog/${post.id}`} key={post.id} legacyBehavior passHref>
-            <a className="group">
+            <div className="group">
               <Card className="overflow-hidden transition-all duration-300 ease-in-out transform group-hover:scale-105 shadow-lg rounded-lg">
                 <CardHeader>
                   <CardTitle className="text-lg font-semibold group-hover:text-primary transition-colors duration-300">
@@ -40,7 +40,7 @@ export default function BlogPage() {
                   </p>
                 </CardFooter>
               </Card>
-            </a>
+            </div>
           </Link>
         ))}
       </div>

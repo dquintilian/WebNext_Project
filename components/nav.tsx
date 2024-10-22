@@ -24,7 +24,6 @@ const navItems = [
     route: "/content",
     active: false,
   },
-  
 ];
 
 export function Navbar() {
@@ -37,9 +36,7 @@ export function Navbar() {
           alignItems: "center",
         }}
       >
-        <div className="text-2xl cursor-default">
-          🪴
-        </div>
+        <div className="text-2xl cursor-default">🪴</div>
         {navItems.map((navItems) => (
           <NavigationMenuItem>
             <Link href={navItems.route} passHref>
