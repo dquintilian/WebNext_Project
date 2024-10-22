@@ -10,20 +10,21 @@ import { useState } from "react";
 
 const navItems = [
   {
-    name: "Home",
+    name: "🏠 Home",
     route: "/",
     active: false,
   },
   {
-    name: "Blog",
+    name: "📝 Blog",
     route: "/blog",
     active: false,
   },
   {
-    name: "Content",
+    name: "📕 Content",
     route: "/content",
     active: false,
   },
+  
 ];
 
 export function Navbar() {
@@ -36,6 +37,9 @@ export function Navbar() {
           alignItems: "center",
         }}
       >
+        <div className="text-2xl cursor-default">
+          🪴
+        </div>
         {navItems.map((navItems) => (
           <NavigationMenuItem>
             <Link href={navItems.route} passHref>
