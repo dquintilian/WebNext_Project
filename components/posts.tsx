@@ -1,11 +1,10 @@
-import Link from 'next/link'; // Importing the Link component from Next.js to handle client-side navigation between blog posts
+import Link from "next/link"; // Importing the Link component from Next.js to handle client-side navigation between blog posts
 // Importing the getBlogPosts function, which retrieves the list of blog posts from a utility file
 
 export const metadata = {
-  title: 'Blog', // Metadata title used for SEO purposes
-  description: 'Read my blog.', // Metadata description used for SEO purposes
+  title: "Blog", // Metadata title used for SEO purposes
+  description: "Read my blog.", // Metadata description used for SEO purposes
 };
-
 
 export default function Page() {
   return (
@@ -20,7 +19,6 @@ export default function Page() {
         <div>
           <h2 className="font-semibold text-3xl mb-6 text-white">Posts</h2>
           {/* Increased font size and changed color to white to contrast with the background */}
-       
         </div>
       </div>
     </section>

@@ -1,7 +1,6 @@
 "use client";
-
 import Link from "next/link"; // Import Next.js Link component
-
+import { Button } from "@/components/ui/button";
 export function BlogSection() {
   return (
     <>
@@ -11,7 +10,7 @@ export function BlogSection() {
           className="flex items-center dark:text-neutral-100 hover:text-blue-600 transition-colors duration-200"
         >
           <span className="mr-2 text-2xl">📕</span>{" "}
-          <span className="text-xl font-semibold">Read My Blog</span>
+          {/* <span className="text-xl font-semibold">Read My Blog</span> */}
         </Link>
       </div>
       <div className="my-16">
@@ -20,6 +19,8 @@ export function BlogSection() {
     </>
   );
 }
+
+const calendarLink: string | undefined = "https://calendar.app.google/3ccDgwaDfwD6iGT77"
 
 export default function IntroPage() {
   return (
@@ -48,16 +49,15 @@ export default function IntroPage() {
         <section id="learn More Section ">
           <div className="my-8 py-6">
             <div className="flex justify-center">
-              <Link href="/product">
-                <button className="bg-blue-600 text-white font-bold py-3 px-8 rounded-full transform transition duration-300 ease-in-out hover:bg-neutral-600 hover:shadow-lg active:scale-95">
-                  Learn More About Me
-                </button>
-              </Link>
+            <Link
+              href={calendarLink ? calendarLink : ""}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <Button size="lg">Let's Chat!</Button>
+            </Link>
             </div>
           </div>
-        </section>
-        <section>
-          <BlogSection />
         </section>
       </section>
     </main>

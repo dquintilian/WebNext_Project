@@ -80,7 +80,7 @@ export default function BlogPage() {
     <div className="container mx-auto px-4 py-8">
       <h1 className="text-4xl font-bold mb-8">Blog 📝</h1>
       <Separator className="my-4"/>
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-8">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-1 gap-8">
         {blogPosts.map((post) => (
           // <Link href={`/blog/${post.slug}`} key={post.id} legacyBehavior passHref>
             <a className="group">
@@ -102,7 +102,7 @@ export default function BlogPage() {
                     {post.excerpt}
                   </CardDescription>
                 </CardHeader>
-                <CardFooter className="flex justify-between items-center px-4 py-2 bg-gray-50">
+                <CardFooter className="flex items-center px-4 py-2 bg-gray-50">
                   <p className="text-xs text-muted-foreground">
                     {new Date(post.publishDate).toLocaleDateString()}
                   </p>
