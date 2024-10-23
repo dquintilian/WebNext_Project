@@ -1,8 +1,10 @@
 import Link from "next/link";
-import { exampleBlogPosts } from "@/components/assets/Blogs";
+import { Blogs, Blog } from "@/components/assets/Blogs";
 
 export default function BlogPostPage({ params }: { params: { slug: string } }) {
-  const post = exampleBlogPosts.find((post) => post.id === params.slug);
+  // Ensure that TypeScript knows Blogs is an array of Blog objects
+
+  const post = Blogs.find((blog: Blog) => blog.id == params.slug);
 
   // If post is not found, show the fallback content
   if (!post) {

@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { exampleBlogPosts } from "@/components/assets/Blogs";
+import { Blogs } from "@/components/assets/Blogs";
 import {
   Card,
   CardDescription,
@@ -13,7 +13,7 @@ import { Separator } from "@radix-ui/react-separator";
 
 export default function BlogPage() {
   // For now, we're using the example data instead of fetching from Contentful
-  const blogPosts = exampleBlogPosts;
+  const blogPosts = Blogs;
 
   return (
     <div className="container mx-auto px-4 py-8">

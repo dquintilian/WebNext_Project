@@ -1,6 +1,6 @@
 // Define the shape of our blog post
-interface Blogs {
-  id: number;
+export interface Blog {
+  id: string;
   title: string;
   type: BlogCategory
   slug: string;
@@ -17,9 +17,9 @@ enum BlogCategory {
   AI = "AI"
 }
 
-export const exampleBlogPosts: Blogs[] = [
+export const Blogs: Blog[] = [
   {
-    id: 1,
+    id: "1",
     title: "Getting Started with React",
     slug: "getting-started-with-react",
     type: BlogCategory.Technology,
@@ -36,7 +36,7 @@ export const exampleBlogPosts: Blogs[] = [
     `,
   },
   {
-    id: 2,
+    id: "2",
     title: "Advanced TypeScript Techniques",
     slug: "advanced-typescript-techniques",
     type: BlogCategory.Technology,
@@ -52,7 +52,7 @@ export const exampleBlogPosts: Blogs[] = [
     `,
   },
   {
-    id: 3,
+    id: "3",
     title: "Building Responsive Layouts with Tailwind CSS",
     slug: "building-responsive-layouts-with-tailwind-css",
     type: BlogCategory.Technology,
@@ -68,7 +68,7 @@ export const exampleBlogPosts: Blogs[] = [
     `,
   },
   {
-    id: 4,
+    id: "4",
     title: "Next.js 13: What's New",
     slug: "nextjs-13-whats-new",
     type: BlogCategory.Technology,
@@ -84,7 +84,7 @@ export const exampleBlogPosts: Blogs[] = [
     `,
   },
   {
-    id: 5,
+    id: "5",
     title: "State Management with Redux Toolkit",
     slug: "state-management-with-redux-toolkit",
     type: BlogCategory.Technology,
@@ -101,7 +101,7 @@ export const exampleBlogPosts: Blogs[] = [
     `,
   },
   {
-    id: 6,
+    id: "6",
     title: "Building a REST API with Node.js and Express",
     slug: "building-a-rest-api-with-nodejs-and-express",
     type: BlogCategory.Technology,
