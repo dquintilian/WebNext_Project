@@ -3,7 +3,6 @@ import Link from "next/link";
 import { exampleBlogPosts } from "@/components/products/blogList";
 import {
   Card,
-  CardContent,
   CardDescription,
   CardFooter,
   CardHeader,
