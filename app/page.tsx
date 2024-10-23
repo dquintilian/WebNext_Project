@@ -54,7 +54,7 @@ export default function IntroPage() {
               target="_blank"
               rel="noopener noreferrer"
             >
-              <Button size="lg">Let's Chat!</Button>
+              <Button size="lg">Let&apos;s Chat!</Button>
             </Link>
             </div>
           </div>

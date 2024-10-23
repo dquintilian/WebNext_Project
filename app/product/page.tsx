@@ -50,7 +50,7 @@ export default function Page() {
               target="_blank"
               rel="noopener noreferrer"
             >
-              <Button size="lg">Let's Chat!</Button>
+              <Button size="lg">Let&apos;s Chat!</Button>
             </Link>
           </div>
         </div>
