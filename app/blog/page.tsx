@@ -32,7 +32,9 @@ export default function BlogPage() {
                     {post.excerpt}
                   </CardDescription>
                 </CardHeader>
-                <CardFooter className="flex items-center px-4 py-2 bg-gray-50">
+                <CardFooter className="flex justify-between items-center px-4 py-2 bg-gray-50">
+                  <p className="text-xs text-muted-foreground">
+                  </p>
                   <p className="text-xs text-muted-foreground">
                     {new Date(post.publishDate).toLocaleDateString()}
                   </p>

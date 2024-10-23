@@ -46,16 +46,15 @@ export default function RootLayout({
     >
       <Head>
         {/* Ensure the title is populated */}
-        <title>My Next.js App</title>
+        <title>Dominic Quintilian's Website</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <meta name="description" content="A sample Next.js application with optimized stability and performance." />
+        <meta name="description" content="Dominic Quintilian's Professional Product Management Website" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <body className="antialiased max-w-xl mx-4 mt-8 lg:mx-auto">
         <Navbar />
         <main className="flex-auto min-w-0 mt-6 flex flex-col px-2 md:px-0">
           {children}
-          {/* Lazy load Analytics and SpeedInsights to improve performance */}
           <Analytics />
           <SpeedInsights />
         </main>

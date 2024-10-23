@@ -32,6 +32,7 @@ export default function ContentPage() {
                   </CardDescription>
                 </CardHeader>
                 <CardFooter className="flex justify-between items-center px-4 py-2 bg-gray-50">
+                  <p className="text-xs text-muted-foreground"></p>
                   <p className="text-xs text-muted-foreground">{asset.type}</p>
                 </CardFooter>
               </Card>

@@ -6,7 +6,7 @@ const nextConfig = {
     return [
       {
         source: '/:path*',
-        has: [{ type: 'query', key: 'path' }],
+        has: [{ type: 'query', key: 'path', value:'admin' }],
         destination: '/:path*/',
         permanent: true,
       },
