@@ -16,7 +16,7 @@ export default function BlogPostPage({ params }: { params: { slug: string } }) {
             <span className="text-2xl">←</span> Back to Blog
           </Link>
         </div>
-        <p>Ahh we must have misplaced this post....😅</p>
+        <p>Ahh we must have misplaced this post...😅</p>
       </section>
     );
   }
