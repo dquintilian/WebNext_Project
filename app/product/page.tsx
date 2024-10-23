@@ -5,24 +5,13 @@ import { products } from "../../components/products/productList"; // Importing s
 import {
   Card,
   CardContent,
-  CardDescription,
-  CardFooter,
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
-import Image from "next/image";
 
 const calendarLink: string | undefined = process.env.CALENDAR_Public_URL;
-
-//[] Todo Need to reference this within the code itself
-interface productCardProps {
-  service: { title: string; description: string };
-  index: number;
-  isSelected: boolean;
-  onClick: () => void;
-}
 
 export default function Page() {
   const [selectedService, setSelectedService] = useState<number | null>(null);
