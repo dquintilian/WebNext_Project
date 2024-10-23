@@ -2,7 +2,7 @@
 import Link from "next/link"; // Import Next.js Link component
 import { Button } from "@/components/ui/button";
 
-const calendarLink: string | undefined = "https://calendar.app.google/3ccDgwaDfwD6iGT77"
+const calendarLink:string = "https://calendar.app.google/3ccDgwaDfwD6iGT77"
 
 export default function IntroPage() {
   return (
@@ -32,7 +32,7 @@ export default function IntroPage() {
           <div className="my-8 py-6">
             <div className="flex justify-center">
             <Link
-              href={calendarLink ? calendarLink : ""}
+              href={calendarLink}
               target="_blank"
               rel="noopener noreferrer"
             >
