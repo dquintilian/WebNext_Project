@@ -1,5 +1,3 @@
-import Link from "next/link"; // Importing the Link component from Next.js to handle client-side navigation between blog posts
-// Importing the getBlogPosts function, which retrieves the list of blog posts from a utility file
 
 export const metadata = {
   title: "Blog", // Metadata title used for SEO purposes

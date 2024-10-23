@@ -1,7 +1,6 @@
 "use client";
 import { useState } from "react";
 import Link from "next/link";
-import { BlogPosts } from "../../components/posts"; // Importing BlogPosts component
 import { products } from "../../components/products/productList"; // Importing services
 import {
   Card,

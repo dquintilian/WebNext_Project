@@ -1,7 +1,6 @@
 "use client";
 
 import { useState } from "react";
-import { BlogPosts } from "@/components/posts";// Importing BlogPosts component from the specified path
 import { products } from "@/components/products/productList";
 import Image from "next/image";
 import Link from "next/link";

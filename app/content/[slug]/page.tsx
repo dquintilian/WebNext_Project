@@ -1,6 +1,4 @@
 import Link from 'next/link';
-import { documentToReactComponents } from '@contentful/rich-text-react-renderer';
-import { notFound } from 'next/navigation'; // To handle 404 responses
 import { exampleContentAssets } from '@/components/products/contentList'; // Import example content data
 
 // Renders the content based on the slug

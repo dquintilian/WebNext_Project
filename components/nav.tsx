@@ -6,7 +6,6 @@ import {
 } from "@radix-ui/react-navigation-menu";
 import Link from "next/link";
 import { navigationMenuTriggerStyle } from "@/components/ui/navigation-menu";
-import { useState } from "react";
 
 const navItems = [
   {

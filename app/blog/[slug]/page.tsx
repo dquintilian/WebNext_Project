@@ -1,6 +1,4 @@
 import Link from 'next/link';
-import { documentToReactComponents } from '@contentful/rich-text-react-renderer';
-import { notFound } from 'next/navigation'; // To handle 404 responses
 import {exampleBlogPosts} from '@/components/products/blogList';
 
 // Fetches the data for the blog post based on the slug
