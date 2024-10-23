@@ -1,13 +1,12 @@
-
 import Link from "next/link";
-import { exampleBlogPosts } from "@/components/products/blogList";
+import { exampleBlogPosts } from "@/components/assets/Blogs";
 import {
   Card,
   CardDescription,
   CardFooter,
   CardHeader,
   CardTitle,
-} from "@/components/ui/card";
+} from "@/components/molecules/card";
 import { Separator } from "@radix-ui/react-separator";
 
 // Example JSON data (replace this with Contentful fetching later)

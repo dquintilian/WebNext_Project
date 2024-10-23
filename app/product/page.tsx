@@ -1,15 +1,15 @@
 "use client";
 import { useState } from "react";
 import Link from "next/link";
-import { products } from "../../components/products/productList"; // Importing services
+import { Products } from "@/components/assets/Products";
 import {
   Card,
   CardContent,
   CardHeader,
   CardTitle,
-} from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
-import { Separator } from "@/components/ui/separator";
+} from "@/components/molecules/card";
+import { Button } from "@/components/atomic/button";
+import { Separator } from "@/components/atomic/separator";
 
 const calendarLink: string | undefined = process.env.CALENDAR_Public_URL;
 
@@ -58,7 +58,7 @@ export default function Page() {
 
       <section>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-16">
-          {products.map(( service, index) => (
+          {Products.map((service, index) => (
             <Card
               key={index}
               onClick={() =>

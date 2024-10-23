@@ -1,7 +1,8 @@
 // Define the shape of our blog post
-interface BlogPost {
-  id: string;
+interface Blogs {
+  id: number;
   title: string;
+  type: BlogCategory
   slug: string;
   excerpt: string;
   featuredImage: string;
@@ -9,11 +10,19 @@ interface BlogPost {
   body: string; // Added body property for detailed content
 }
 
-export const exampleBlogPosts: BlogPost[] = [
+enum BlogCategory {
+  Product = "Product",
+  Technology = "Technology",
+  Growth = "Growth",
+  AI = "AI"
+}
+
+export const exampleBlogPosts: Blogs[] = [
   {
-    id: "1",
+    id: 1,
     title: "Getting Started with React",
     slug: "getting-started-with-react",
+    type: BlogCategory.Technology,
     excerpt:
       "Learn the basics of React and start building your first component.",
     featuredImage: "/placeholder.svg?height=400&width=600",
@@ -27,9 +36,10 @@ export const exampleBlogPosts: BlogPost[] = [
     `,
   },
   {
-    id: "2",
+    id: 2,
     title: "Advanced TypeScript Techniques",
     slug: "advanced-typescript-techniques",
+    type: BlogCategory.Technology,
     excerpt: "Dive deep into TypeScript and learn advanced types and patterns.",
     featuredImage: "/placeholder.svg?height=400&width=600",
     publishDate: "2023-05-20",
@@ -42,9 +52,10 @@ export const exampleBlogPosts: BlogPost[] = [
     `,
   },
   {
-    id: "3",
+    id: 3,
     title: "Building Responsive Layouts with Tailwind CSS",
     slug: "building-responsive-layouts-with-tailwind-css",
+    type: BlogCategory.Technology,
     excerpt: "Create beautiful, responsive designs quickly with Tailwind CSS.",
     featuredImage: "/placeholder.svg?height=400&width=600",
     publishDate: "2023-05-25",
@@ -57,9 +68,10 @@ export const exampleBlogPosts: BlogPost[] = [
     `,
   },
   {
-    id: "4",
+    id: 4,
     title: "Next.js 13: What's New",
     slug: "nextjs-13-whats-new",
+    type: BlogCategory.Technology,
     excerpt: "Explore the latest features and improvements in Next.js 13.",
     featuredImage: "/placeholder.svg?height=400&width=600",
     publishDate: "2023-05-30",
@@ -72,9 +84,10 @@ export const exampleBlogPosts: BlogPost[] = [
     `,
   },
   {
-    id: "5",
+    id: 5,
     title: "State Management with Redux Toolkit",
     slug: "state-management-with-redux-toolkit",
+    type: BlogCategory.Technology,
     excerpt:
       "Simplify your Redux code with the official, opinionated Redux Toolkit.",
     featuredImage: "/placeholder.svg?height=400&width=600",
@@ -88,9 +101,10 @@ export const exampleBlogPosts: BlogPost[] = [
     `,
   },
   {
-    id: "6",
+    id: 6,
     title: "Building a REST API with Node.js and Express",
     slug: "building-a-rest-api-with-nodejs-and-express",
+    type: BlogCategory.Technology,
     excerpt: "Learn how to create a robust REST API using Node.js and Express.",
     featuredImage: "/placeholder.svg?height=400&width=600",
     publishDate: "2023-06-09",

@@ -1,8 +1,12 @@
-import Link from 'next/link';
-import { exampleContentAssets } from '@/components/products/contentList'; // Import example content data
+import Link from "next/link";
+import { exampleContentAssets } from "@/components/assets/Content"; // Import example content data
 
 // Renders the content based on the slug
-export default function ContentPostPage({ params }: { params: { slug: string } }) {
+export default function ContentPostPage({
+  params,
+}: {
+  params: { slug: string };
+}) {
   // Find the content item based on the slug
   const post = exampleContentAssets.find((item) => item.id === params.slug);
 
@@ -10,7 +14,10 @@ export default function ContentPostPage({ params }: { params: { slug: string } }
     return (
       <div className="text-2xl flex flex-col space-y-6">
         <div className="flex items-center mb-8">
-          <Link href="/content/entries" className="hover:text-blue-600 dark:hover:text-blue-400 transition-colors duration-200 mr-4">
+          <Link
+            href="/content/entries"
+            className="hover:text-blue-600 dark:hover:text-blue-400 transition-colors duration-200 mr-4"
+          >
             <span className="text-2xl">←</span> Back to Content Library
           </Link>
         </div>
@@ -25,7 +32,10 @@ export default function ContentPostPage({ params }: { params: { slug: string } }
     <div className="text-2xl flex flex-col space-y-6">
       {/* Container for subtle back button */}
       <div className="flex items-center mb-8">
-        <Link href="/content/" className="hover:text-blue-600 dark:hover:text-blue-400 transition-colors duration-200 mr-4">
+        <Link
+          href="/content/"
+          className="hover:text-blue-600 dark:hover:text-blue-400 transition-colors duration-200 mr-4"
+        >
           <span className="text-2xl">←</span> Back to Content Library
         </Link>
       </div>

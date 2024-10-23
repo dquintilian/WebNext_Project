@@ -5,8 +5,8 @@ import {
   CardFooter,
   CardHeader,
   CardTitle,
-} from "@/components/ui/card";
-import { exampleContentAssets } from "@/components/products/contentList";
+} from "@/components/molecules/card";
+import { exampleContentAssets } from "@/components/assets/Content";
 
 export default function ContentPage() {
   const contentAssets = exampleContentAssets;
@@ -15,7 +15,12 @@ export default function ContentPage() {
       <h1 className="text-4xl font-bold mb-8 text-left">Content Library 📚</h1>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-1 gap-8">
         {contentAssets.map((asset) => (
-          <Link href={`/content/${asset.id}`} key={asset.id} legacyBehavior passHref>
+          <Link
+            href={`/content/${asset.id}`}
+            key={asset.id}
+            legacyBehavior
+            passHref
+          >
             <div className="group cursor-pointer">
               <Card className="overflow-hidden transition-transform duration-300 ease-in-out transform group-hover:scale-105 shadow-lg rounded-lg">
                 <CardHeader>

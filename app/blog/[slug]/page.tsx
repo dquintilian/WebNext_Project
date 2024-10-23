@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { exampleBlogPosts } from "@/components/products/blogList";
+import { exampleBlogPosts } from "@/components/assets/Blogs";
 
 export default function BlogPostPage({ params }: { params: { slug: string } }) {
   const post = exampleBlogPosts.find((post) => post.id === params.slug);

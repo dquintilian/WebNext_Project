@@ -1,8 +1,8 @@
 "use client";
 import Link from "next/link"; // Import Next.js Link component
-import { Button } from "@/components/ui/button";
+import { Button } from "@/components/atomic/button";
 
-const calendarLink:string = "https://calendar.app.google/3ccDgwaDfwD6iGT77"
+const calendarLink: string = "https://calendar.app.google/3ccDgwaDfwD6iGT77";
 
 export default function IntroPage() {
   return (
@@ -31,13 +31,13 @@ export default function IntroPage() {
         <section id="learn More Section ">
           <div className="my-8 py-6">
             <div className="flex justify-center">
-            <Link
-              href={calendarLink}
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <Button size="lg">Let&apos;s Chat!</Button>
-            </Link>
+              <Link
+                href={calendarLink}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <Button size="lg">Let&apos;s Chat!</Button>
+              </Link>
             </div>
           </div>
         </section>

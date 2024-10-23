@@ -5,7 +5,7 @@ import {
   NavigationMenuList,
 } from "@radix-ui/react-navigation-menu";
 import Link from "next/link";
-import { navigationMenuTriggerStyle } from "@/components/ui/navigation-menu";
+import { navigationMenuTriggerStyle } from "@/components/molecules/navigation-menu";
 
 const navItems = [
   {
