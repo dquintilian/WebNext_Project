@@ -4,23 +4,8 @@ import localFont from "next/font/local";
 import { Navbar } from "../components/nav";
 import { Analytics } from "@vercel/analytics/react";
 import { SpeedInsights } from "@vercel/speed-insights/next";
-import Footer from "../components/footer";
 import { baseUrl } from "./sitemap";
 import Head from "next/head";
-import BlogFooter from "@/components/blogFooter";
-import Link from "next/link";
-import { Separator } from "@/components/ui/separator";
-
-import {
-  NavigationMenu,
-  NavigationMenuContent,
-  NavigationMenuIndicator,
-  NavigationMenuItem,
-  NavigationMenuLink,
-  NavigationMenuList,
-  NavigationMenuTrigger,
-  NavigationMenuViewport,
-} from "@/components/ui/navigation-menu";
 
 // Import fonts using localFont
 const geistSans = localFont({
@@ -81,7 +66,7 @@ export default function RootLayout({
       )}
     >
       <Head>
-        <title>{metadata.title.default}</title>
+        <title></title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <body className="antialiased max-w-xl mx-4 mt-8 lg:mx-auto">
