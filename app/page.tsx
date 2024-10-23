@@ -1,24 +1,6 @@
 "use client";
 import Link from "next/link"; // Import Next.js Link component
 import { Button } from "@/components/ui/button";
-export function BlogSection() {
-  return (
-    <>
-      <div className="flex justify-center items-center mt-8">
-        <Link
-          href="/blog"
-          className="flex items-center dark:text-neutral-100 hover:text-blue-600 transition-colors duration-200"
-        >
-          <span className="mr-2 text-2xl">📕</span>{" "}
-          {/* <span className="text-xl font-semibold">Read My Blog</span> */}
-        </Link>
-      </div>
-      <div className="my-16">
-
-      </div>
-    </>
-  );
-}
 
 const calendarLink: string | undefined = "https://calendar.app.google/3ccDgwaDfwD6iGT77"
 
