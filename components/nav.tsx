@@ -36,11 +36,11 @@ export function Navbar() {
         }}
       >
         <div className="text-2xl cursor-default">🪴</div>
-        {navItems.map((navItems) => (
-          <NavigationMenuItem>
-            <Link href={navItems.route} passHref>
+        {navItems.map((item) => (
+          <NavigationMenuItem key={item.route}>
+            <Link href={item.route} passHref>
               <NavigationMenuLink className={navigationMenuTriggerStyle()}>
-                {navItems.name}
+                {item.name}
               </NavigationMenuLink>
             </Link>
           </NavigationMenuItem>
