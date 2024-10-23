@@ -1,54 +1,33 @@
-import "./global.css";
-import type { Metadata } from "next";
+import "../styles/global.css";
 import localFont from "next/font/local";
+import dynamic from "next/dynamic";
 import { Navbar } from "../components/organisms/nav";
-import { Analytics } from "@vercel/analytics/react";
-import { SpeedInsights } from "@vercel/speed-insights/next";
-import { baseUrl } from "./sitemap";
 import Head from "next/head";
 
+// Dynamically import Analytics and SpeedInsights for better performance
+const Analytics = dynamic(() => import("@vercel/analytics/react").then((mod) => mod.Analytics), {
+  ssr: false,
+  loading: () => <p></p>,
+});
+
+const SpeedInsights = dynamic(() => import("@vercel/speed-insights/next").then((mod) => mod.SpeedInsights), {
+  ssr: false,
+  loading: () => <p></p>,
+});
 // Import fonts using localFont
 const geistSans = localFont({
-  src: "./fonts/GeistVF.woff",
+  src: "../public/fonts/GeistVF.woff",
   variable: "--font-geist-sans",
   weight: "100 900",
 });
 
 const geistMono = localFont({
-  src: "./fonts/GeistMonoVF.woff",
+  src: "../public/fonts/GeistMonoVF.woff",
   variable: "--font-geist-mono",
   weight: "100 900",
 });
 
 // Combine metadata
-export const metadata: Metadata = {
-  metadataBase: new URL(baseUrl),
-  title: {
-    default: "Dominic Quintilian",
-    template: "%s | Next.js Portfolio Starter",
-  },
-  description: "This is my portfolio.",
-  openGraph: {
-    title: "My Portfolio",
-    description: "This is my portfolio.",
-    url: baseUrl,
-    siteName: "My Portfolio",
-    locale: "en_US",
-    type: "website",
-  },
-  robots: {
-    index: true,
-    follow: true,
-    googleBot: {
-      index: true,
-      follow: true,
-      "max-video-preview": -1,
-      "max-image-preview": "large",
-      "max-snippet": -1,
-    },
-  },
-};
-
 const cx = (...classes: string[]) => classes.filter(Boolean).join(" ");
 
 export default function RootLayout({
@@ -66,13 +45,17 @@ export default function RootLayout({
       )}
     >
       <Head>
-        <title></title>
+        {/* Ensure the title is populated */}
+        <title>My Next.js App</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta name="description" content="A sample Next.js application with optimized stability and performance." />
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <body className="antialiased max-w-xl mx-4 mt-8 lg:mx-auto">
         <Navbar />
         <main className="flex-auto min-w-0 mt-6 flex flex-col px-2 md:px-0">
           {children}
+          {/* Lazy load Analytics and SpeedInsights to improve performance */}
           <Analytics />
           <SpeedInsights />
         </main>

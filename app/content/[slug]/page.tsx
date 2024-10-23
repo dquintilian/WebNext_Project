@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { exampleContentAssets } from "@/components/assets/Content"; // Import example content data
+import { Content } from "@/components/assets/Content"; // Import example content data
 
 // Renders the content based on the slug
 export default function ContentPostPage({
@@ -8,7 +8,7 @@ export default function ContentPostPage({
   params: { slug: string };
 }) {
   // Find the content item based on the slug
-  const post = exampleContentAssets.find((item) => item.id === params.slug);
+  const post = Content.find((item) => item.id === params.slug);
 
   if (!post) {
     return (

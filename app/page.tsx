@@ -10,7 +10,7 @@ export default function IntroPage() {
       <section className="font-aptos text-gray-800">
         <div className="flex justify-center mb-8">
           <img
-            src="/assets/images/website_headshot.jpeg"
+            src="../images/website_headshot.jpeg"
             alt="Dominic Quintilian Headshot"
             className="w-40 h-40 rounded-full border-4 border-blue-500 shadow-lg"
           />
