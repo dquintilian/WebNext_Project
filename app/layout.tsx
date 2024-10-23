@@ -7,7 +7,6 @@ import { SpeedInsights } from "@vercel/speed-insights/next";
 import { baseUrl } from "./sitemap";
 import Head from "next/head";
 
-
 // Import fonts using localFont
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -68,7 +67,7 @@ export default function RootLayout({
     >
       <Head>
         <title></title>
-        <link rel="icon" href="public/favicon.ico" />
+        <link rel="icon" href="/favicon.ico" />
       </Head>
       <body className="antialiased max-w-xl mx-4 mt-8 lg:mx-auto">
         <Navbar />
