@@ -11,8 +11,10 @@ import { Separator } from "@radix-ui/react-separator";
 
 // Example JSON data (replace this with Contentful fetching later)
 
+
+
 export default function BlogPage() {
-  // For now, we're using the example data instead of fetching from Contentful
+
   const blogPosts = Blogs;
 
   return (

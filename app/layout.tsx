@@ -31,10 +31,13 @@ const geistMono = localFont({
 const cx = (...classes: string[]) => classes.filter(Boolean).join(" ");
 
 export default function RootLayout({
+  
   children,
 }: {
   children: React.ReactNode;
 }) {
+  // For client-side usage
+
   return (
     <html
       lang="en"

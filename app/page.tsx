@@ -2,6 +2,7 @@
 import Link from "next/link"; // Import Next.js Link component
 import { Button } from "@/components/atomic/button";
 
+
 const calendarLink: string = "https://calendar.app.google/3ccDgwaDfwD6iGT77";
 
 export default function IntroPage() {
