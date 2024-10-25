@@ -1,26 +1,30 @@
-import { client } from "../Middleware/client";
 
-//Fetches all of the available entries
-export const fetchEntries = async () => {
-    try {
-      const entry = await client.getEntries({
-        content_type: 'article'
-      })
-      return entry;
-    } catch (error) {
-      console.error('Error fetching entry:', error);
-      return null;
-    }
-  };
+import { createClient,EntryCollection } from 'contentful';
 
-//Fetches one particular entry
-export const fetchEntry = async () => {
-    try {
-      const entry = await client.getEntry();
-      return entry;
-    } catch (error) {
-      console.error('Error fetching entry:', error);
-      return null;
-    }
-  };
-  
+
+const spaceId = 'h02wmcwkik29'; // Replace with your Contentful space ID
+const accessToken = '8PMsoE3EtqxriO3oUJcPFdPGb_EMYAfvLfGU632B44s'  ; // Replace with your Content Delivery API token
+
+const client = createClient({
+  space: spaceId,
+  accessToken: accessToken,
+  environment: 'master',
+});
+
+
+
+export async function fetchAllArticles(): Promise<EntryCollection<any> | null> {
+  try {
+    const entries = await client.getEntries({
+      content_type: 'article', // Replace with your article content type ID
+    });
+    console.log(entries.items + "These are the blog entries");
+    
+    return entries;
+  } catch (error) {
+    console.error('Error fetching articles:', error);
+    return null;
+  }
+}
+
+

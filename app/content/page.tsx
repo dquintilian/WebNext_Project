@@ -10,6 +10,7 @@ import { Content } from "@/components/assets/Content";
 
 export default function ContentPage() {
   const contentAssets = Content;
+  
   return (
     <div className="container mx-auto px-4 py-8">
       <h1 className="text-4xl font-bold mb-8 text-left">Content Library 📚</h1>

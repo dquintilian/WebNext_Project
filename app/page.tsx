@@ -1,21 +1,24 @@
 "use client";
 import Link from "next/link"; // Import Next.js Link component
 import { Button } from "@/components/atomic/button";
-
+import { fetchAllArticles } from "@/library/utils/blog";
 
 const calendarLink: string = "https://calendar.app.google/3ccDgwaDfwD6iGT77";
 
 export default function IntroPage() {
+  ;
   return (
     <main>
       <section className="font-aptos text-gray-800">
-        <div className="flex justify-center mb-8">
-          <img
-            src="../images/website_headshot.jpeg"
-            alt="Dominic Quintilian Headshot"
-            className="w-40 h-40 rounded-full border-4 border-blue-500 shadow-lg"
-          />
-        </div>
+        <section>
+          <div className="flex justify-center mb-8">
+            <img
+              src="../images/website_headshot.jpeg"
+              alt="Dominic Quintilian Headshot"
+              className="w-40 h-40 rounded-full border-4 border-blue-500 shadow-lg"
+            />
+          </div>
+        </section>
         <section id="Headline Section">
           <h2 className="mb-4 text-4xl font-extrabold tracking-tighter text-center text-blue-600">
             Dominic Quintilian 🪴
