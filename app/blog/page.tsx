@@ -81,20 +81,21 @@ export default async function BlogPage() {
     <div>
       {blogPosts.length > 0 ? (
         blogPosts.map((post) => (
-          <div key={post.sys.id} className="my-4">
-            <Card>
+          
+          <div key={post.sys.id} className="my-4 group cursor-pointer">
+            <Card className="overflow-hidden transition-transform duration-300 ease-in-out transform group-hover:scale-105 shadow-lg rounded-lg">
             <Link href={`/blog/${post.sys.id}`} passHref>
 
               <CardHeader>
-                <CardTitle>{post.fields.articleTitle}</CardTitle>
+              <CardTitle className="text-lg font-semibold group-hover:text-primary transition-colors duration-300">{post.fields.articleTitle}</CardTitle>
               </CardHeader>
               <CardDescription>
                 {post.fields.articleBody || ""}
               </CardDescription>
-              <CardFooter>
-                  Read more
-                
-              </CardFooter>
+              <CardFooter className="flex justify-between items-center px-4 py-2 bg-gray-50">
+                  <p className="text-xs text-muted-foreground"></p>
+                  <p className="text-xs text-muted-foreground"></p>
+                </CardFooter>
               </Link>
             </Card>
           </div>
