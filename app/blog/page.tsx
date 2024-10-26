@@ -8,6 +8,8 @@ import {
   CardTitle,
 } from "@/components/molecules/card";
 
+import { createClient, EntryCollection } from "contentful";
+
 // Contentful Client Setup
 const spaceId = "h02wmcwkik29";
 const accessToken = "8PMsoE3EtqxriO3oUJcPFdPGb_EMYAfvLfGU632B44s";
@@ -18,26 +20,25 @@ const client = createClient({
   environment: "master",
 });
 
-// Interface for BlogPost
+// Define the BlogPost interface to match Contentful's entry structure
 interface BlogPost {
   sys: {
     id: string;
   };
   fields: {
-    articleTitle: string;
-    articleBody?: string;
+    articleTitle: {
+      [locale: string]: string;
+    };
+    articleBody: {
+      [locale: string]: any;
+    };
   };
 }
 
-// Type guard function to check if a value is a string
-function isString(value: unknown): value is string {
-  return typeof value === "string";
-}
-
-// Function to Fetch Articles
-async function fetchAllArticles(): Promise<BlogPost[]> {
+// Function to fetch all articles
+async function fetchAllArticles(): Promise<BlogPost[] | null> {
   try {
-    const entries: EntryCollection<any> = await client.getEntries({
+    const entries: EntryCollection<BlogPost> = await client.getEntries({
       content_type: "article",
     });
 
@@ -46,30 +47,17 @@ async function fetchAllArticles(): Promise<BlogPost[]> {
       return [];
     }
 
-    // Map entries to match BlogPost type
-    return entries.items.map((entry: Entry<any>) => {
-      const title = entry.fields.articleTitle;
-      const body = entry.fields.articleBody;
-
-      // Ensure that title is a string, otherwise provide a default value
-      const articleTitle = isString(title) ? title : "Untitled";
-
-      // Check if the articleBody exists and is a string
-      const articleBody = isString(body) ? body : undefined;
-
-      return {
-        sys: {
-          id: entry.sys.id,
-        },
-        fields: {
-          articleTitle,
-          articleBody,
-        },
-      };
-    });
+    // Map entries to retrieve title and body with localization
+    return entries.items.map((entry) => ({
+      sys: entry.sys,
+      fields: {
+        articleTitle: entry.fields.articleTitle["en-US"] ?? "Untitled",
+        articleBody: entry.fields.articleBody["en-US"] ?? { content: [{ nodeType: "paragraph", content: [{ value: "No content available.", nodeType: "text" }] }] },
+      },
+    }));
   } catch (error) {
     console.error("Error fetching articles:", error);
-    return [];
+    return null;
   }
 }
 
