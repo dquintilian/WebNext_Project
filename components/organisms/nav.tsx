@@ -18,11 +18,11 @@ const navItems = [
     route: "/blog",
     active: false,
   },
-  {
-    name: "📕 Content",
-    route: "/content",
-    active: false,
-  },
+  // {
+  //   name: "📕 Content",
+  //   route: "/content",
+  //   active: false,
+  // },
 ];
 
 export function Navbar() {
