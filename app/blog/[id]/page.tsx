@@ -17,7 +17,7 @@ const client = createClient({
 // Interface for BlogPost
 interface BlogPost {
   title: string | null;
-  body: any | null;
+  body: string | null;
 }
 
 // Custom render options with types for `node` and `children`
