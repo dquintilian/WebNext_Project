@@ -1,4 +1,4 @@
-import { BLOCKS, INLINES, Block, Inline, Text, Node,Document } from "@contentful/rich-text-types";
+import { BLOCKS, INLINES, Block, Inline, Text,Document } from "@contentful/rich-text-types";
 import { createClient } from "contentful";
 import { documentToReactComponents, Options } from "@contentful/rich-text-react-renderer";
 import Link from "next/link";
@@ -58,8 +58,16 @@ const renderOptions: Options = {
 };
 
 // Function to Fetch a Single Article by Entry ID
-function isDocument(value: any): value is Document {
-  return value && value.nodeType === BLOCKS.DOCUMENT && Array.isArray(value.content);
+function isDocument(value: unknown): value is Document {
+  // Ensure value has `nodeType` and `content` properties that match the Document structure
+  return (
+    typeof value === "object" &&
+    value !== null &&
+    "nodeType" in value &&
+    "content" in value &&
+    (value as Document).nodeType === BLOCKS.DOCUMENT &&
+    Array.isArray((value as Document).content)
+  );
 }
 
 async function fetchArticleById(entryId: string): Promise<BlogPost | null> {
