@@ -31,7 +31,6 @@ const geistMono = localFont({
 const cx = (...classes: string[]) => classes.filter(Boolean).join(" ");
 
 export default function RootLayout({
-  
   children,
 }: {
   children: React.ReactNode;
@@ -49,9 +48,9 @@ export default function RootLayout({
     >
       <Head>
         {/* Ensure the title is populated */}
-        <title>Dominic Quintilian's Website</title>
+        <title>Dominic Quintilian&apos;s Website</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <meta name="description" content="Dominic Quintilian's Professional Product Management Website" />
+        <meta name="description" content="Dominic Quintilian&apos;s Professional Product Management Website" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <body className="antialiased max-w-xl mx-4 mt-8 lg:mx-auto">
