@@ -1,4 +1,4 @@
-import { createClient, EntryCollection } from "contentful";
+import { createClient, EntryCollection, Entry } from "contentful";
 import Link from "next/link";
 import React from "react";
 import { Document } from "@contentful/rich-text-types";
@@ -48,7 +48,7 @@ async function fetchAllArticles(): Promise<BlogPost[]> {
       return [];
     }
 
-    return entries.items.map((entry:any) => ({
+    return entries.items.map((entry: Entry<BlogPost>) => ({
       sys: {
         id: entry.sys.id,
         createdAt: entry.sys.createdAt,
@@ -88,7 +88,6 @@ export default async function BlogListPage() {
       </div>
       {blogPosts.map((post) => (
         <div key={post.sys.id} className="mb-4">
-          {/* Removed the <a> tag inside <Link> */}
           <Link
             href={`/blog/${post.sys.id}`}
             className="text-blue-600 hover:underline text-3xl font-bold"
