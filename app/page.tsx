@@ -1,7 +1,7 @@
 "use client";
 import Link from "next/link"; // Import Next.js Link component
 import { Button } from "@/components/atomic/button";
-import { fetchAllArticles } from "@/library/utils/blog";
+
 
 const calendarLink: string = "https://calendar.app.google/3ccDgwaDfwD6iGT77";
 
