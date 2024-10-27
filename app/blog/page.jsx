@@ -1,4 +1,4 @@
-import { createClient, EntryCollection, Entry } from "contentful";
+import { createClient } from "contentful";
 import Link from "next/link";
 import React from "react";
 import { Document } from "@contentful/rich-text-types";
@@ -13,33 +13,11 @@ const client = createClient({
   environment: "master",
 });
 
-// Define the BlogPost interface
-interface EntrySys {
-  id: string;
-  createdAt: string;
-  updatedAt: string;
-  contentType: {
-    sys: {
-      id: string;
-      type: string;
-    };
-  };
-}
-
-interface BlogPost {
-  sys: EntrySys;
-  fields: {
-    articleTitle: string | null;
-    articleBody?: Document | null;
-  };
-  contentTypeId: string;
-}
-
 // Function to Fetch All Articles
-async function fetchAllArticles(): Promise<BlogPost[]> {
+async function fetchAllArticles() {
   console.log("Fetching all articles from Contentful...");
   try {
-    const entries: EntryCollection<BlogPost> = await client.getEntries<BlogPost>({
+    const entries = await client.getEntries({
       content_type: "article",
     });
 
@@ -48,7 +26,8 @@ async function fetchAllArticles(): Promise<BlogPost[]> {
       return [];
     }
 
-    return entries.items.map((entry: Entry<BlogPost>) => ({
+    // Map the entries to extract the necessary fields
+    return entries.items.map((entry) => ({
       sys: {
         id: entry.sys.id,
         createdAt: entry.sys.createdAt,
