@@ -1,7 +1,6 @@
 import { createClient } from "contentful";
 import Link from "next/link";
 import React from "react";
-import { Document } from "@contentful/rich-text-types";
 
 // Contentful Client Setup
 const spaceId = "h02wmcwkik29";
