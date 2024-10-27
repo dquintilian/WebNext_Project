@@ -1,102 +1,86 @@
-"use client"; // If using this as a client component
+'use client'
 
-import { useEffect, useState } from 'react';
-import { createClient, EntryCollection, Entry } from 'contentful';
-import Link from 'next/link';
+import { useEffect, useState } from 'react'
+import { Entry, EntryCollection } from 'contentful'
+import Link from 'next/link'
 import {
   Card,
   CardDescription,
   CardFooter,
   CardHeader,
   CardTitle,
-} from '@/components/molecules/card';
+} from '@/components/molecules/card'
 
-// Contentful Client Setup
-const spaceId = 'h02wmcwkik29';
-const accessToken = '8PMsoE3EtqxriO3oUJcPFdPGb_EMYAfvLfGU632B44s';
+import { createClient, EntrySkeletonType } from 'contentful';
+
+
+
+const spaceId = "h02wmcwkik29";
+const accessToken = "8PMsoE3EtqxriO3oUJcPFdPGb_EMYAfvLfGU632B44s";
+if (!spaceId || !accessToken) {
+  throw new Error('Contentful environment variables are not set');
+}
 
 const client = createClient({
   space: spaceId,
   accessToken: accessToken,
-  environment: 'master',
+  environment: "master",
 });
 
-// Interface for BlogPost
-interface BlogPost {
-  sys: {
-    id: string;
-  };
+interface BlogPost extends EntrySkeletonType {
   fields: {
-    articleTitle: string;
-    articleBody?: string;
-  };
-}
-
-// Type guard function to check if a value is a string
-function isString(value: unknown): value is string {
-  return typeof value === 'string';
-}
-
-// Function to Fetch Articles
-async function fetchAllArticles(): Promise<BlogPost[]> {
-  try {
-    const entries: EntryCollection<any> = await client.getEntries({
-      content_type: 'article',
-    });
-
-    if (!entries || !entries.items) {
-      console.error('No items found in the response');
-      return [];
-    }
-
-    // Map entries to match BlogPost type
-    return entries.items.map((entry: Entry<any>) => {
-      const title = entry.fields.articleTitle;
-      const body = entry.fields.articleBody;
-
-      // Ensure that title is a string, otherwise provide a default value
-      const articleTitle = isString(title) ? title : 'Untitled';
-
-      // Check if the articleBody exists and is a string
-      const articleBody = isString(body) ? body : undefined;
-
-      return {
-        sys: {
-          id: entry.sys.id,
-        },
-        fields: {
-          articleTitle,
-          articleBody,
-        },
-      };
-    });
-  } catch (error) {
-    console.error('Error fetching articles:', error);
-    return [];
+    articleTitle: string
+    articleBody?: string
   }
 }
 
-// Page Component
+function isString(value: unknown): value is string {
+  return typeof value === 'string'
+}
+
+async function fetchAllArticles(): Promise<BlogPost[]> {
+  try {
+    const entries: EntryCollection<BlogPost> = await client.getEntries<BlogPost>({
+      content_type: 'article',
+    })
+
+    if (!entries || !entries.items) {
+      console.error('No items found in the response')
+      return []
+    }
+
+    return entries.items.map((entry: Entry<BlogPost>) => ({
+      sys: entry.sys,
+      fields: {
+        articleTitle: isString(entry.fields.articleTitle) ? entry.fields.articleTitle : 'Untitled',
+        articleBody: isString(entry.fields.articleBody) ? entry.fields.articleBody : undefined,
+      },
+      contentTypeId: 'article',
+    }))
+  } catch (error) {
+    console.error('Error fetching articles:', error)
+    return []
+  }
+}
+
 export default function BlogPage() {
-  const [blogPosts, setBlogPosts] = useState<BlogPost[]>([]);
-  const [isLoading, setIsLoading] = useState(true); // Loading state
+  const [blogPosts, setBlogPosts] = useState<BlogPost[]>([])
+  const [isLoading, setIsLoading] = useState(true)
 
   useEffect(() => {
     async function loadArticles() {
-      const articles = await fetchAllArticles();
-      setBlogPosts(articles);
-      setIsLoading(false); // Set loading to false once data is fetched
+      const articles = await fetchAllArticles()
+      setBlogPosts(articles)
+      setIsLoading(false)
     }
 
-    loadArticles();
-  }, []);
+    loadArticles()
+  }, [])
 
-  // Render a loading indicator or nothing while loading
   if (isLoading) {
-    return <div>Loading...</div>; // You can replace this with a spinner or any other loading component
+    return <div>Loading...</div>
   }
 
-  // Render the content once it's ready
   return (
     <div>
       {blogPosts.length > 0 ? (
@@ -119,5 +103,5 @@ export default function BlogPage() {
         <p>No blog posts available.</p>
       )}
     </div>
-  );
+  )
 }
