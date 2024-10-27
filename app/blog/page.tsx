@@ -28,6 +28,7 @@ const client = createClient({
 });
 
 interface BlogPost extends EntrySkeletonType {
+  sys: any
   fields: {
     articleTitle: string
     articleBody?: string

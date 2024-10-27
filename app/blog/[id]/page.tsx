@@ -1,4 +1,4 @@
-import { BLOCKS, INLINES, Block, Inline, Text } from "@contentful/rich-text-types";
+import { BLOCKS, INLINES, Block, Inline, Text, Node,Document } from "@contentful/rich-text-types";
 import { createClient } from "contentful";
 import { documentToReactComponents, Options } from "@contentful/rich-text-react-renderer";
 import Link from "next/link";
@@ -17,48 +17,78 @@ const client = createClient({
 // Interface for BlogPost
 interface BlogPost {
   title: string | null;
-  body: string | null;
+  body: Document;
 }
-
 // Custom render options with types for `node` and `children`
 const renderOptions: Options = {
   renderNode: {
-    [BLOCKS.HEADING_1]: (node: Block, children: React.ReactNode) => (
+    [BLOCKS.HEADING_1]: (node: Block | Inline, children: React.ReactNode) => (
       <h1 className="text-5xl font-extrabold tracking-tight mb-4">{children}</h1>
     ),
-    [BLOCKS.HEADING_2]: (node: Block, children: React.ReactNode) => (
+    [BLOCKS.HEADING_2]: (node: Block | Inline, children: React.ReactNode) => (
       <h2 className="text-3xl font-bold mt-6 mb-3">{children}</h2>
     ),
-    [BLOCKS.PARAGRAPH]: (node: Block, children: React.ReactNode) => (
+    [BLOCKS.PARAGRAPH]: (node: Block | Inline, children: React.ReactNode) => (
       <p className="text-lg leading-relaxed mb-4">{children}</p>
     ),
-    [BLOCKS.QUOTE]: (node: Block, children: React.ReactNode) => (
+    [BLOCKS.QUOTE]: (node: Block | Inline, children: React.ReactNode) => (
       <blockquote className="border-l-4 border-blue-500 pl-4 italic mb-4">{children}</blockquote>
     ),
-    [INLINES.HYPERLINK]: (node: Inline) => {
-      const content = node.content as Text[];
-      return (
-        <a
-          href={(node.data.uri as string) || "#"}
-          className="text-blue-600 hover:underline"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          {content[0]?.value || "Link"}
-        </a>
-      );
+    [INLINES.HYPERLINK]: (node: Block | Inline) => {
+      // Perform a type check to ensure `node` is actually of type `Inline`
+      if (node.nodeType === INLINES.HYPERLINK && "content" in node) {
+        const content = node.content as Text[];
+    
+        return (
+          <a
+            href={(node.data.uri as string) || "#"}
+            className="text-blue-600 hover:underline"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            {content[0]?.value || "Link"}
+          </a>
+        );
+      }
+    
+      // Fallback in case `node` is not of the expected `Inline` type
+      return <span>Invalid Link</span>;
     },
   },
 };
 
 // Function to Fetch a Single Article by Entry ID
+function isDocument(value: any): value is Document {
+  return value && value.nodeType === BLOCKS.DOCUMENT && Array.isArray(value.content);
+}
+
 async function fetchArticleById(entryId: string): Promise<BlogPost | null> {
   try {
     const entry = await client.getEntry(entryId);
-    const title = entry.fields.articleTitle ?? "Untitled";
-    const body = entry.fields.articleBody ?? {
-      content: [{ nodeType: "paragraph", content: [{ value: "No content available.", nodeType: "text" }] }],
-    };
+
+    const title = (entry.fields.articleTitle as string | null) ?? "Untitled";
+
+    // Use type guard to check if articleBody is a Document
+    const body: Document = isDocument(entry.fields.articleBody)
+      ? entry.fields.articleBody
+      : {
+          nodeType: BLOCKS.DOCUMENT, // Explicitly set to BLOCKS.DOCUMENT
+          data: {},
+          content: [
+            {
+              nodeType: BLOCKS.PARAGRAPH, // Explicitly set to BLOCKS.PARAGRAPH
+              data: {},
+              content: [
+                {
+                  nodeType: "text", // Text node type does not need `BLOCKS`, it's a simple string.
+                  value: "No content available.",
+                  marks: [],
+                  data: {},
+                },
+              ],
+            },
+          ],
+        };
 
     return { title, body };
   } catch (error) {
