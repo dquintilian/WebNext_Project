@@ -17,6 +17,7 @@ export default function IntroPage() {
               alt="Dominic Quintilian Headshot"
               className="w-40 h-40 rounded-full border-4 border-blue-500 shadow-lg"
             />
+            <p></p>
           </div>
         </section>
         <section id="Headline Section">
