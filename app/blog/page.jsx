@@ -72,6 +72,7 @@ export default async function BlogListPage() {
           >
             {post.fields.articleTitle || "Untitled"}
           </Link>
+          <p></p>
           <p className="text-lg leading-relaxed">
             Published on: {new Date(post.sys.createdAt).toLocaleDateString()}
           </p>
